@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+    font-family: futura;
+}
+body{
+    height: 100%;
+    background: radial-gradient(antiquewhite, aliceblue);
+    background: cover;
+}
+
+.calc {
+    margin: 100px auto;
+    background-color: darkseagreen;
+    max-width: 320px;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.2);
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+
+button {
+    width: 70px;
+    height: 60px;
+    margin: 6px 2px 2px;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.2);
+    font-size: 22px;
+    border-radius: 5px;
+    background-color: lightcoral;
+
+}
+
+.number {
+    background-color: antiquewhite;
+
+}
+
+#clear {
+    background-color: orange;
+}
+
+#equal {
+    background-color: whitesmoke;
+}
+
+#display {
+    width: 240px;
+    height: 60px;
+    background-color: aqua;
+    float:right;
+    margin: 6px 2px 2px;
+    box-shadow: inset 2px 2px 1px 0px rgba(0,0,0,0.2);
+    font-style: oblique;
+    padding: auto;
+
+}
