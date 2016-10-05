@@ -1,12 +1,9 @@
-/*
-todo
-no multiple dots
 
-*/
 
 var storedNumber;
 var workingNumber = '0';
 var operand;
+
 
 function numberPress(num) {
     if ((/\./g).test(workingNumber) && num === '.'){
@@ -20,6 +17,7 @@ function numberPress(num) {
     }
     document.getElementById('display').innerHTML = workingNumber;
 
+    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function clearPress() {
@@ -27,11 +25,13 @@ function clearPress() {
     workingNumber = '0';
     operand = null;
     document.getElementById('display').innerHTML = workingNumber;
+
+    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function equalsPress() {
     if (storedNumber && workingNumber && operand) {
-        storedNumber = operators[operand](parseInt(storedNumber, 10), parseInt(workingNumber, 10));
+        storedNumber = operators[operand](parseFloat(storedNumber, 10), parseFloat(workingNumber, 10));
         workingNumber = '0';
         operand = null;  
         //changes the storednumber to the result of our calculation, sets working number to 0, sets operator to null
@@ -44,6 +44,7 @@ function equalsPress() {
         document.getElementById('display').innerHTML = workingNumber;
     }
     
+    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function operatorPress(operator) {
@@ -57,6 +58,8 @@ function operatorPress(operator) {
     }
     
     operand = operator; //sets out operator
+
+    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 var operators = {
@@ -94,5 +97,5 @@ function somefunction(e) {
             clearPress();
     }
     e.stopPropagation;
-    console.log(workingNumber);
+    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
