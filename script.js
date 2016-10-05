@@ -9,6 +9,10 @@ var workingNumber = '0';
 var operand;
 
 function numberPress(num) {
+    if ((/\./g).test(workingNumber) && num === '.'){
+        return;
+    }
+    
     if (workingNumber === '0') {
         workingNumber = num.toString();
     } else {
@@ -49,7 +53,7 @@ function operatorPress(operator) {
     if (!storedNumber){
         storedNumber = workingNumber; //if there is no saved number, moves working number to that space
         workingNumber = '0'
-        document.getElementById('display').innerHTML = workingNumber;
+        document.getElementById('display').innerHTML = storedNumber;
     }
     
     operand = operator; //sets out operator
@@ -92,42 +96,3 @@ function somefunction(e) {
     e.stopPropagation;
     console.log(workingNumber);
 }
-
-
-/*
-workingNumber = '55';
-operatorPress('add');
-workingNumber = '10';
-console.log(storedNumber);
-equalsPress();
-console.log(storedNumber);
-workingNumber = '5';
-operatorPress('divide');
-operatorPress('add');
-console.log(storedNumber);
-workingNumber = 5;
-equalsPress();
-console.log(storedNumber);
-
-
-console.log(workingNumber);
-numberPress(4);
-
-console.log(workingNumber);
-numberPress('.');
-
-console.log(workingNumber);
-numberPress(7);
-
-console.log(workingNumber);
-numberPress(0);
-console.log(workingNumber);
-
-//initial test for adding to working numbers
-
-console.log(operators.add(5, 5));
-console.log(operators['add'](10, 5));
-console.log(operators['subtract'](5, 3));
-console.log(operators['multiply'](3, 4));
-console.log(operators['divide'](10, 2));
-//tests for my operators.*/
