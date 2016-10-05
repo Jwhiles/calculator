@@ -14,6 +14,15 @@ function numberPress(num) {
     } else {
         workingNumber += num.toString();
     }
+    document.getElementById('display').innerHTML = workingNumber;
+
+}
+
+function clearPress() {
+    storedNumber = null;
+    workingNumber = '0';
+    operand = null;
+    document.getElementById('display').innerHTML = workingNumber;
 }
 
 function equalsPress() {
@@ -28,7 +37,7 @@ function equalsPress() {
         storedNumber = workingNumber;
         workingNumber = '0';
         //if there is not enough stuff to work with, assumes we want to move working number to stored
-
+        document.getElementById('display').innerHTML = workingNumber;
     }
     
 }
@@ -40,6 +49,7 @@ function operatorPress(operator) {
     if (!storedNumber){
         storedNumber = workingNumber; //if there is no saved number, moves working number to that space
         workingNumber = '0'
+        document.getElementById('display').innerHTML = workingNumber;
     }
     
     operand = operator; //sets out operator
@@ -74,11 +84,10 @@ function somefunction(e) {
         if(clickedClass === "operator")
             operatorPress(clickedID);
         
-        
-        document.getElementById('display').innerHTML = workingNumber;
-
         if(clickedID === 'equal')
             equalsPress();
+        if(clickedID === 'clear')
+            clearPress();
     }
     e.stopPropagation;
     console.log(workingNumber);
