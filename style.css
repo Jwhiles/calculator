@@ -55,4 +55,7 @@ button {
     padding: auto;
     text-align: right;
     font-size: 38px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
