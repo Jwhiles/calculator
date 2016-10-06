@@ -3,6 +3,7 @@
 var storedNumber;
 var workingNumber = '0';
 var operand;
+var prev = document.getElementById('prev').innerHTML;
 
 
 function numberPress(num) {
@@ -29,19 +30,22 @@ function clearPress() {
 
 function equalsPress() {
     if (storedNumber && workingNumber && operand) {
-        storedNumber = operators[operand](parseFloat(storedNumber, 10), parseFloat(workingNumber, 10));
+        var result = operators[operand](parseFloat(storedNumber, 10), parseFloat(workingNumber, 10));
+        var theCalculation = storedNumber + ' ' + symbols[operand] + ' ' + workingNumber + ' = ' + result + '<br>';
+        storedNumber = result;
         workingNumber = '0';
         operand = null;
         //changes the storednumber to the result of our calculation, sets working number to 0, sets operator to null
         document.getElementById('display').innerHTML = storedNumber;
-
+        console.log(theCalculation);
+        console.log(prev);
+        document.getElementById('prev').innerHTML = theCalculation + document.getElementById('prev').innerHTML;
     } else {
         storedNumber = workingNumber;
         workingNumber = '0';
         //if there is not enough stuff to work with, assumes we want to move working number to stored
         document.getElementById('display').innerHTML = workingNumber;
     }
-    
 }
 
 function operatorPress(operator) {
@@ -73,6 +77,13 @@ var operators = {
     }
 };  //an object with my operators, which can be accessed with string literals :)
 
+var symbols = {
+    'add': '+',
+    'subtract': '-',
+    'multiply': 'x',
+    'divide': '÷'
+}
+
 
 
 var parent = document.querySelector("#calculate");
@@ -98,3 +109,4 @@ function somefunction(e) {
     e.stopPropagation;
     console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
+

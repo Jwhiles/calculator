@@ -59,3 +59,12 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#prev {
+    color: lightblue;
+    transition: color 0.5s;
+}
+
+#prev:hover {
+    color: darkgrey;
+}
