@@ -2,6 +2,13 @@ html {
     height: 100%;
     font-family: futura;
 }
+
+h1 {
+    font-size: 75px;
+    margin: 20px auto 20px auto;
+    text-align: center;
+    margin
+}
 body{
     height: 100%;
     background: radial-gradient(antiquewhite, aliceblue);
@@ -9,7 +16,7 @@ body{
 }
 
 .calc {
-    margin: 100px auto;
+    margin: 40px auto;
     background-color: darkseagreen;
     max-width: 320px;
     justify-content: center;
@@ -28,8 +35,14 @@ button {
     font-size: 22px;
     border-radius: 5px;
     background-color: lightcoral;
-
+    transition: height 0.1s, background-color 1s;
 }
+
+button:active {
+    box-shadow: 0px 0px 0px 0px;
+    height: 62px;        
+}
+
 
 .number {
     background-color: antiquewhite;
@@ -62,9 +75,12 @@ button {
 
 #prev {
     color: lightblue;
-    transition: color 0.5s;
+    margin: auto;
+    text-align: center;
+    transition: color 0.5s, font-size 0.5s;
 }
 
 #prev:hover {
     color: darkgrey;
+    font-size: 22px;
 }
