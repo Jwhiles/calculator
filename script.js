@@ -1,4 +1,4 @@
-
+'use strict';
 
 var storedNumber;
 var workingNumber = '0';
@@ -6,7 +6,7 @@ var operand;
 
 
 function numberPress(num) {
-    if ((/\./g).test(workingNumber) && num === '.'){
+    if ((/\./g).test(workingNumber) && num === '.') {
         return;
     }
     
@@ -17,7 +17,6 @@ function numberPress(num) {
     }
     document.getElementById('display').innerHTML = workingNumber;
 
-    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function clearPress() {
@@ -26,14 +25,13 @@ function clearPress() {
     operand = null;
     document.getElementById('display').innerHTML = workingNumber;
 
-    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function equalsPress() {
     if (storedNumber && workingNumber && operand) {
         storedNumber = operators[operand](parseFloat(storedNumber, 10), parseFloat(workingNumber, 10));
         workingNumber = '0';
-        operand = null;  
+        operand = null;
         //changes the storednumber to the result of our calculation, sets working number to 0, sets operator to null
         document.getElementById('display').innerHTML = storedNumber;
 
@@ -44,23 +42,21 @@ function equalsPress() {
         document.getElementById('display').innerHTML = workingNumber;
     }
     
-    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
 }
 
 function operatorPress(operator) {
-    if(storedNumber && operand){ //checks if there is an operation stored in memory, if so does it, then saves the new one
+    if (operand) {
         equalsPress();
     }
-    if (!storedNumber){
-        storedNumber = workingNumber; //if there is no saved number, moves working number to that space
-        workingNumber = '0'
-        document.getElementById('display').innerHTML = storedNumber;
+    
+    if (workingNumber !== '0') {
+        storedNumber = workingNumber;
+        workingNumber = '0';
+        document.getElementById('display').innerHTML = storedNumber;    
     }
     
-    operand = operator; //sets out operator
-
-    console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
-}
+    operand = operator;
+    }
 
 var operators = {
     "add": function (object, subject) {
@@ -86,15 +82,18 @@ function somefunction(e) {
     if (e.target !== e.currentTarget) {
         var clickedID = e.target.id;
         var clickedClass = e.target.className;
-        if(clickedClass === 'number')
+        if (clickedClass === 'number') {
             numberPress(clickedID);
-        if(clickedClass === "operator")
+        }
+        if (clickedClass === "operator") {
             operatorPress(clickedID);
-        
-        if(clickedID === 'equal')
+        }
+        if (clickedID === 'equal') {
             equalsPress();
-        if(clickedID === 'clear')
+        }
+        if (clickedID === 'clear') {
             clearPress();
+        }
     }
     e.stopPropagation;
     console.log("Stored Number: " + storedNumber, "Working Number: " + workingNumber, "Operand: " + operand)
